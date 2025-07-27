@@ -21,3 +21,7 @@ module "backend" {
   image  = var.backend_image
 }
 
+module "frontend" {
+  
+}
+
