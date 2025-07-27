@@ -3,7 +3,7 @@ variable "project_id" {
   description = "ID del proyecto de Google Cloud"
 }
 
-variable "region" {
+variable "location" {
   type        = string
   description = "Región para desplegar recursos"
   default     = "us-central1"
@@ -13,6 +13,11 @@ variable "region" {
 variable "backend_image" {
   type = string
   description = "imagen a usar"
-  default = "value"
+
 }
 
+variable "frontend_image" {
+  type = string
+  description = "imagen a usar sitio web"
+
+}

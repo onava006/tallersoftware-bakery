@@ -10,18 +10,21 @@ terraform {
 
 provider "google" {
   project = var.project_id
-  region  = var.region
+  region  = var.location
 }
 
 
 module "backend" {
   source     = "./modules/backend"
-  region     = var.region
+  location     = var.location
   name   = "backend"
   image  = var.backend_image
 }
 
 module "frontend" {
-  
+  source     = "./modules/frontend"
+  location     = var.location
+  name   = "website"
+  image  = var.frontend_image
 }
 

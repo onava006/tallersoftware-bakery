@@ -1,0 +1,29 @@
+resource "google_cloud_run_service" "frontend" {
+  name     = var.name
+  location = var.location
+
+  template {
+    spec {
+      containers {
+        image = var.image
+        ports {
+          container_port = 80
+        }
+      }
+    }
+  }
+
+  traffic {
+    percent         = 100
+    latest_revision = true
+  }
+
+  autogenerate_revision_name = true
+}
+
+resource "google_cloud_run_service_iam_member" "frontend_public" {
+  location = var.location
+  service  = google_cloud_run_service.frontend.name
+  role     = "roles/run.invoker"
+  member   = "allUsers"
+}
