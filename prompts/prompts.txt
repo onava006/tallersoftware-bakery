@@ -1,0 +1,31 @@
+FRONTEND: 
+
+necesito crear una aplicacion con react. que dependencias necesito instalar en manjaro linux
+
+Select a variant: │ ○ TypeScript │ ○ TypeScript + SWC │ ● JavaScript │ ○ JavaScript + SWC │ ○ React Router v7 ↗ │ ○ TanStack Router ↗ │ ○ RedwoodSDK ↗ │ ○ RSC ↗
+
+hazme un gitignore para una app react y un back en express
+
+como configuro mi repositorio local para hacer push a github
+
+necesito registrarme con mi email y nombre en mi local
+
+ayudame a crear diferentes secciones. Necesito la barra superior y una seccion donde se vean todos los productos de una panaderia
+
+como paso props a un sub componente?
+
+necesito utilizar una libreria de temas para dejar bonito el asunto
+
+tailwind tiene compenentes pre diseñados?
+
+quiero usar bootstrap en ese caso
+
+necesito hacer algo más en el main para que se incluya react bootstrap?
+
+hazme una lista con todos los comandos que te pedí
+
+pero solo la lista con lo que te pedí, no con tus respuestas
+
+o sea los prompts
+
+BACKEND: 
