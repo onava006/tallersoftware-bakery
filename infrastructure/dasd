@@ -1,0 +1,7 @@
+oscar_nvergara@cloudshell:~ (tallersoftware-467001)$ find / -type d -name "gcloud" 2>/dev/null
+/usr/lib/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/jetty94/jetty-home/modules/gcloud
+/usr/lib/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/jetty94/jetty-home/etc/sessions/gcloud
+/usr/lib/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/jetty12/jetty-home/modules/gcloud
+/usr/lib/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/jetty12/jetty-home/etc/sessions/gcloud
+/usr/lib/google-cloud-sdk/lib/googlecloudsdk/command_lib/compute/tpus/googledata/devsite/site-cloud/en/sdk/gcloud
+/google/gopath/pkg/mod/golang.org/x/oauth2@v0.14.0/google/testdata/gcloud
