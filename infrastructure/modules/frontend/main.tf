@@ -1,6 +1,9 @@
 resource "google_cloud_run_service" "frontend" {
   name     = var.name
   location = var.location
+  project  = var.project
+
+
 
   template {
     spec {

@@ -18,6 +18,7 @@ module "backend" {
   location     = var.location
   name   = "backend"
   image  = var.backend_image
+  project = var.project_id
 }
 
 module "frontend" {
@@ -25,5 +26,6 @@ module "frontend" {
   location     = var.location
   name   = "website"
   image  = var.frontend_image
+  project = var.project_id
 }
 

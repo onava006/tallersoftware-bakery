@@ -10,4 +10,7 @@ variable "image" {
   type = string
 }
 
+variable "project" {
+  type =  string
+}
 

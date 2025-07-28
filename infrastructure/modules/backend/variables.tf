@@ -12,3 +12,7 @@ variable "image" {
   description = "Imagen del contenedor"
   type        = string
 }
+
+variable "project" {
+  type =  string
+}

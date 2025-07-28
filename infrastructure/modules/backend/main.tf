@@ -3,6 +3,7 @@
 resource "google_cloud_run_service" "backend_service" {
   name = var.name
   location = var.location
+  project  = var.project
 
   template {
     spec {
@@ -24,8 +25,10 @@ resource "google_cloud_run_service" "backend_service" {
 # 3. Habilita las APIs necesarias
 resource "google_project_service" "artifact_registry" {
   service = "artifactregistry.googleapis.com"
+  project = var.project
 }
 
 resource "google_project_service" "cloud_run" {
   service = "run.googleapis.com"
+  project = var.project
 }
