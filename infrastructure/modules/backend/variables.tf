@@ -3,7 +3,7 @@ variable "name" {
   type        = string
 }
 
-variable "region" {
+variable "location" {
   description = "Región donde desplegar"
   type        = string
 }
@@ -11,9 +11,4 @@ variable "region" {
 variable "image" {
   description = "Imagen del contenedor"
   type        = string
-}
-
-variable "location"{
-    type = string
-    default = "us-central1"
 }
