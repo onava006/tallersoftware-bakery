@@ -13,7 +13,6 @@ provider "google" {
   region  = var.location
 }
 
-
 module "backend" {
   source     = "./modules/backend"
   location     = var.location
