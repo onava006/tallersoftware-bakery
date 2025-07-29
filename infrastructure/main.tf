@@ -29,3 +29,8 @@ module "frontend" {
   project = var.project_id
 }
 
+module "permissions"{
+  source = "./modules/permissions"
+  project = var.project_id
+}
+

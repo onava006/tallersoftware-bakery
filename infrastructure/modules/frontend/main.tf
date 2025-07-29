@@ -13,6 +13,8 @@ resource "google_cloud_run_service" "frontend" {
           container_port = 80
         }
       }
+      service_account_name = "frontend-service-account@${var.project}.iam.gserviceaccount.com"
+
     }
   }
 
