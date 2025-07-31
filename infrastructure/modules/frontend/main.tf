@@ -56,3 +56,10 @@ resource "google_service_account_iam_member" "allow_act_as" {
   role               = "roles/iam.serviceAccountUser"
   member             = "user:oscar.nvergara@gmail.com" 
 }
+resource "google_cloud_run_service_iam_member" "frontend_can_invoke_backend" {
+  service    = var.backend_service_name
+  location   = var.location
+  role       = "roles/run.invoker"
+  member     = "serviceAccount:${google_service_account.frontend_sa.email}"    
+
+}

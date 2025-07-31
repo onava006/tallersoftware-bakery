@@ -18,3 +18,6 @@ variable "backend_url" {
   type        = string
   description = "URL del backend para consumir desde el frontend"
 }
+variable "backend_service_name" {
+  type = string
+}

@@ -36,3 +36,6 @@ variable "db_name" {
   type = string
 }
 
+variable "frontend_service_account_email"{
+  type = string
+}

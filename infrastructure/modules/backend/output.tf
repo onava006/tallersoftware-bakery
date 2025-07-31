@@ -18,3 +18,5 @@ output "backend_service_location" {
 output "backend_service_url" {
   value = google_cloud_run_service.backend_service.status[0].url
 }
+
+
