@@ -29,3 +29,7 @@ variable "backend_service_name" {
 variable "backend_service_location" {
   type = string
 }
+
+variable "run_service_account_email" {
+  type = string
+}
