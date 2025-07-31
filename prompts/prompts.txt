@@ -28,4 +28,342 @@ pero solo la lista con lo que te pedí, no con tus respuestas
 
 o sea los prompts
 
+
+
 BACKEND: 
+
+ahora olvida todo lo anterior. Necesito hacer un backend con node.js
+
+
+INFRAESTRUCTURA:
+
+ayudame a hacer el dockerfile
+necesito lo mismo pero para react 
+
+ya, gracias. Ahora necesito trabajar en terraform con gcp, necesito crear la configuración en terraform, vincularla a un monorepo 
+
+➜  trabajo-final gcloud auth login
+Traceback (most recent call last):
+  File "/opt/google-cloud-sdk/lib/gcloud.py", line 132, in <module>
+    main()
+    ~~~~^^
+  File "/opt/google-cloud-sdk/lib/gcloud.py", line 90, in main
+    from googlecloudsdk.core.util import encoding
+  File "/opt/google-cloud-sdk/lib/googlecloudsdk/__init__.py", line 23, in <module>
+    from googlecloudsdk.core.util import importing
+  File "/opt/google-cloud-sdk/lib/googlecloudsdk/core/util/importing.py", line 23, in <module>
+    import imp
+ModuleNotFoundError: No module named 'imp'
+➜  trabajo-final pip install imp
+ERROR: Could not find a version that satisfies the requirement imp (from versions: none)
+ERROR: No matching distribution found for imp
+
+        (attribute, value))
+apitools.base.protorpclite.messages.EnumDefinitionError: May only use integers in Enum definitions.  Found: __static_attributes__ = ()
+
+➜  trabajo-final python --version
+Python 3.11.9
+
+sigo coin el mismo problema apitools.base.protorpclite.messages.EnumDefinitionError: May only use integers in Enum definitions.  Found: __static_attributes__ = ()
+(gcloud-env) ➜  google-cloud-sdk git:(master) ✗ python --version
+Python 3.11.9
+
+da lo mismo, voy a trabajar desde la consola de google. asumo no se va a caer 
+
+comencemos con terraform 
+
+ya, empecemos de cero 
+
+lo que necesito es configurar un backend que est[a en un monorepo y dejarlo en un modulo 
+
+como subo una imagen a  Artifact Registry previamente con Docker?
+
+(gcloud-env) ➜  tallersoftware-bakery git:(feature/components) git push 
+Username for 'https://github.com': onava006
+Password for 'https://onava006@github.com': 
+remote: Invalid username or token. Password authentication is not supported for Git operations.
+fatal: Authentication failed for 'https://github.com/onava006/tallersoftware-bakery/'
+(gcloud-env) ➜  tallersoftware-bakery git:(feature/components) git push 
+Username for 'https://github.com': onava006
+Password for 'https://onava006@github.com': 
+remote: Permission to onava006/tallersoftware-bakery.git denied to onava006.
+fatal: unable to access 'https://github.com/onava006/tallersoftware-bakery/': The requested URL returned error: 403
+
+➜  tallersoftware-bakery git:(feature/components) git push
+The authenticity of host 'github.com (20.201.28.151)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? 
+Host key verification failed.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+denied: Unauthenticated request. Unauthenticated requests do not have permission "artifactregistry.repositories.uploadArtifacts" on resource "projects/tallersoftware-467001/locations/us-central1/repositories/backend" (or it may not exist)
+
+oscar_nvergara@cloudshell:~/tallersoftware-bakery/backend-server$ gcloud auth list
+No credentialed accounts.
+To login, run:
+  $ gcloud auth login ACCOUNT
+
+  oscar_nvergara@cloudshell:~/tallersoftware-bakery/backend-server$ docker push us-central1-docker.pkg.dev/tallersoftware-467001/backend/backend:latest
+The push refers to repository [us-central1-docker.pkg.dev/tallersoftware-467001/backend/backend]
+2e5095bbc550: Preparing 
+91ade9cd6f3f: Preparing 
+804f4e0945e8: Preparing 
+c99d6fa7d168: Preparing 
+d2a991bcab4d: Preparing 
+b624aa2d5ea2: Waiting 
+d399c9dc306f: Waiting 
+84f9fa179c1b: Waiting 
+ce84ba212e49: Waiting 
+e4dc8cd9ecc8: Waiting 
+6428cc293366: Waiting 
+2f7436e79a0b: Waiting 
+name unknown: Repository "backend" not found
+
+oscar_nvergara@cloudshell:~/tallersoftware-bakery/backend-server$ gcloud artifacts repositories create bakery_tallersoftware \
+  --repository-format=docker \
+  --location=us-central1 \
+  --description="Repo para imágenes del proyecto final de taller de software"
+ERROR: (gcloud.artifacts.repositories.create) Error parsing [repository].
+The [repository] resource is not properly specified.
+Failed to find attribute [project]. The attribute can be set in the following ways: 
+- provide the argument repository on the command line with a fully specified name
+- provide the argument --project on the command line
+- set the property core/project
+
+oscar_nvergara@cloudshell:~/tallersoftware-bakery/backend-server (tallersoftware-467001)$ docker push us-central1-docker.pkg.dev/tallersoftware-467001/bakery_tallersoftware/backend:latest
+The push refers to repository [us-central1-docker.pkg.dev/tallersoftware-467001/bakery_tallersoftware/backend]
+2e5095bbc550: Preparing 
+91ade9cd6f3f: Preparing 
+804f4e0945e8: Preparing 
+c99d6fa7d168: Preparing 
+d2a991bcab4d: Preparing 
+b624aa2d5ea2: Waiting 
+d399c9dc306f: Waiting 
+84f9fa179c1b: Waiting 
+ce84ba212e49: Waiting 
+e4dc8cd9ecc8: Waiting 
+6428cc293366: Waiting 
+2f7436e79a0b: Waiting 
+name unknown: Repository "bakery_tallersoftware" not found
+
+como debo dejarla en terraform_ 
+
+ahora ayudame a crear el front 
+
+algo noi entiendo, como especifico las variables que voy a incluir aca "variable "name" {
+  description = "Nombre del servicio"
+  type        = string
+}
+variable "region" {
+  description = "Región donde desplegar"
+  type        = string
+}
+variable "image" {
+  description = "Imagen del contenedor"
+  type        = string
+}
+variable "location"{
+    type = string
+    default = "us-central1"
+}"
+
+Required attribute "location" not specified: An attribute named "location" is required hereTerraform
+
+como valido la configuracion de terraform_ \
+
+.terraform deberia estar en gitignore? 
+
+aunque est[een una subcarpeta se ignora? 
+
+como inicio una imagen en docker  en local? 
+
+ docker run -p 3000:3000 mi-backend:latest
+docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+
+como puedo tomar un repo local y ejecutarlo con docker 
+
+➜  backend-server git:(feature/components) ✗ docker build -t backend .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+time="2025-07-27T20:45:02-04:00" level=error msg="Can't add file /home/oscarn/Proyects/diploma/taller_software/trabajo-final/tallersoftware-bakery/backend-server/.dockerignore to tar: io: read/write on closed pipe"
+time="2025-07-27T20:45:02-04:00" level=error msg="Can't close tar writer: io: read/write on closed pipe"
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.51/build?dockerfile=Dockerfile&t=backend&version=1": dial unix /var/run/docker.sock: connect: permission denied
+
+como arranco mis servuicios en mi projecto de terraform en gcp? 
+
+│ Error: Error creating Service: Post "https://us-central1-run.googleapis.com/apis/serving.knative.dev/v1/namespaces/tallersoftware-467001/services?alt=json": oauth2/google: invalid token JSON from metadata: EOF
+│ │   with module.backend.google_cloud_run_service.backend_service,
+│   on modules/backend/main.tf line 3, in resource "google_cloud_run_service" "backend_service":
+│    3: resource "google_cloud_run_service" "backend_service" {
+│ │ Error: Error when reading or editing Project Service : Request List Project Services tallersoftware-467001 returned error: Batch request and retried single request "List Project Services tallersoftware-467001" both failed. Final error: Failed to list enabled services for project tallersoftware-467001: Get "https://serviceusage.googleapis.com/v1/projects/tallersoftware-467001/services?alt=json&fields=services%2Fname%2CnextPageToken&filter=state%3AENABLED&prettyPrint=false": oauth2/google: invalid token JSON from metadata: EOF
+│    with module.backend.google_project_service.artifact_registry,
+│   on modules/backend/main.tf line 25, in resource "google_project_service" "artifact_registry":
+│   25: resource "google_project_service" "artifact_registry" {
+│ │ Error: Error when reading or editing Project Service : Request List Project Services tallersoftware-467001 returned error: Batch request and retried single request "List Project Services tallersoftware-467001" both failed. Final error: Failed to list enabled services for project tallersoftware-467001: Get "https://serviceusage.googleapis.com/v1/projects/tallersoftware-467001/services?alt=json&fields=services%2Fname%2CnextPageToken&filter=state%3AENABLED&prettyPrint=false": oauth2/google: invalid token JSON from metadata: EOF
+│ │   with module.backend.google_project_service.cloud_run,
+│   on modules/backend/main.tf line 29, in resource "google_project_service" "cloud_run":
+│   29: resource "google_project_service" "cloud_run" {
+│ │ Error: Error creating Service: Post "https://us-central1-run.googleapis.com/apis/serving.knative.dev/v1/namespaces/tallersoftware-467001/services?alt=json": oauth2/google: invalid token JSON from metadata: EOF
+│ │   with module.frontend.google_cloud_run_service.frontend,
+│   on modules/frontend/main.tf line 1, in resource "google_cloud_run_service" "frontend":
+│    1: resource "google_cloud_run_service" "frontend" {
+│ 
+
+WARNING: Your active project does not match the quota project in your local Application Default Credentials file. This might result in unexpected quota issues.
+To update your Application Default Credentials quota project, use the gcloud auth application-default set-quota-project command.
+Updated property [core/project].
+
+ Error: Error when reading or editing Project Service : Request List Project Services tallersoftware-467001 returned error: Batch request and retried single request "List Project Services tallersoftware-467001" both failed. Final error: Failed to list enabled services for project tallersoftware-467001: Get "https://serviceusage.googleapis.com/v1/projects/tallersoftware-467001/services?alt=json&fields=services%2Fname%2CnextPageToken&filter=state%3AENABLED&prettyPrint=false": oauth2/google: invalid token JSON from metadata: EOF
+│   with module.backend.google_project_service.cloud_run,
+│   on modules/backend/main.tf line 29, in resource "google_project_service" "cloud_run":
+│   29: resource "google_project_service" "cloud_run" {
+│ 
+
+│ Error: Error creating Service: Post "https://us-central1-run.googleapis.com/apis/serving.knative.dev/v1/namespaces/tallersoftware-467001/services?alt=json": oauth2/google: invalid token JSON from metadata: EOF
+│   with module.backend.google_cloud_run_service.backend_service,
+│   on modules/backend/main.tf line 3, in resource "google_cloud_run_service" "backend_service":
+│    3: resource "google_cloud_run_service" "backend_service" {
+
+    ➜  infrastructure git:(main) ✗ git restore terraform.tfvars
+error: path 'infrastructure/terraform.tfvars' is unmerged
+
+hay algo malo en mi main.tf de el backend? 
+resource "google_cloud_run_service" "backend_service" {
+  name = var.name
+  location = var.location
+  template {
+    spec {
+      containers {
+        image = "us-central1-docker.pkg.dev/tallersoftware-467001/bakery-tallersoftware/backend:latest"
+        ports {
+          container_port = 8080
+        }
+      }
+    }
+  }
+  traffic {
+    percent         = 100
+    latest_revision = true
+  }
+}
+# 3. Habilita las APIs necesarias
+resource "google_project_service" "artifact_registry" {
+  service = "artifactregistry.googleapis.com"
+}
+resource "google_project_service" "cloud_run" {
+  service = "run.googleapis.com"
+}
+
+me aparece lo mismo ╷
+│ Error: Error creating Service: Post "https://us-central1-run.googleapis.com/apis/serving.knative.dev/v1/namespaces/tallersoftware-467001/services?alt=json": oauth2/google: invalid token JSON from metadata: EOF
+│ │   with module.backend.google_cloud_run_service.backend_service,
+│   on modules/backend/main.tf line 3, in resource "google_cloud_run_service" "backend_service":
+│    3: resource "google_cloud_run_service" "backend_service" {
+│
+less ~/.config/gcloud/application_default_credentials.json
+/home/oscar_nvergara/.config/gcloud/application_default_credentials.json: No such file or directory
+
+no existe ni cuando me autentico lo crea 
+
+no se crea el archivo luego de seguir tus pasos
+
+Credentials saved to file: [/tmp/tmp.XHi74QzvfG/application_default_credentials.json]
+These credentials will be used by any library that requests Application Default Credentials (ADC).
+Quota project "tallersoftware-467001" was added to ADC which can be used by Google client libraries for billing and quota. Note that some services may still bill the project owning the resource.
+
+│ Error: Error creating Service: googleapi: Error 403: Cloud Run Admin API has not been used in project tallersoftware-467001 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/run.googleapis.com/overview?project=tallersoftware-467001 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.
+
+╷
+│ Error: Error waiting to create Service: resource is in failed state "Ready:False", message: Revision 'backend-00001-zw4' is not ready and cannot serve traffic. The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.
+│ │ Logs URL: https://console.cloud.google.com/logs/viewer?project=tallersoftware-467001&resource=cloud_run_revision/service_name/backend/revision_name/backend-00001-zw4&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backend%22%0Aresource.labels.revision_name%3D%22backend-00001-zw4%22 
+│ For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start
+│ │   with module.backend.google_cloud_run_service.backend_service,
+│   on modules/backend/main.tf line 3, in resource "google_cloud_run_service" "backend_service":
+│    3: resource "google_cloud_run_service" "backend_service" {
+
+no se puede cambiar al 3000? debe ser siempre 8080? 
+
+como actualizo la imagen de docker que modifique?
+
+mi front expone el 80 # Etapa 1: Construcción
+FROM node:18 AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+# Etapa 2: Servidor web (nginx)
+FROM nginx:alpine
+# Copia el build al directorio público de nginx
+COPY --from=builder /app/dist /usr/share/nginx/html
+# Elimina configuración por defecto de nginx
+RUN rm /etc/nginx/conf.d/default.conf
+# Copia tu configuración personalizada de nginx
+COPY nginx.conf /etc/nginx/conf.d
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
+
+por que el sertvername es localhost si etoy en la nube?
+
+el dockerfile de mi front es # Etapa 1: Construcción
+FROM node:18 AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+# Etapa 2: Servidor web (nginx)
+FROM nginx:alpine
+# Copia el build al directorio público de nginx
+COPY --from=builder /app/dist /usr/share/nginx/html
+# Elimina configuración por defecto de nginx
+RUN rm /etc/nginx/conf.d/default.conf
+# Copia tu configuración personalizada de nginx
+COPY nginx.conf /etc/nginx/conf.d
+EXPOSE 8080
+CMD ["nginx", "-g", "daemon off;"]
+
+
+ => => naming to us-central1-docker.pkg.dev/tallersoftware-467001/bakery-tallersoftware/backend:latest                                                            0.0s
+ 1 warning found (use docker --debug to expand):
+ - JSONArgsRecommended: JSON arguments recommended for CMD to prevent unintended behavior related to OS signals (line 20)
+
+sigue apareciendo 
+module.backend.google_cloud_run_service.backend_service: Destroying... [id=locations/us-central1/namespaces/tallersoftware-467001/services/backend]
+module.backend.google_cloud_run_service.backend_service: Destruction complete after 0s
+module.backend.google_cloud_run_service.backend_service: Creating...
+╷│ Error: Error waiting to create Service: resource is in failed state "Ready:False", message: Revision 'backend-00001-zdd' is not ready and cannot serve traffic. The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.
+││ Logs URL: https://console.cloud.google.com/logs/viewer?project=tallersoftware-467001&resource=cloud_run_revision/service_name/backend/revision_name/backend-00001-zdd&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22backend%22%0Aresource.labels.revision_name%3D%22backend-00001-zdd%22 
+│ For more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start
+││   with module.backend.google_cloud_run_service.backend_service,
+│   on modules/backend/main.tf line 3, in resource "google_cloud_run_service" "backend_service":
+│    3: resource "google_cloud_run_service" "backend_service" {
+
+2025-07-27 23:11:42.909
+Default STARTUP TCP probe failed 1 time consecutively for container "backend-1" on port 8080. The instance was not started.
+Connection failed with status CANCELLED.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
