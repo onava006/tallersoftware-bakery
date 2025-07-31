@@ -17,7 +17,7 @@ resource "google_sql_user" "db_user" {
 resource "google_project_iam_member" "cloud_run_sql_access" {
   project = var.project
   role    = "roles/cloudsql.client"
-  member  = "serviceAccount:${google_service_account.run_sa.email}"
+member = "serviceAccount:${var.run_service_account_email}"
 }
 
 
