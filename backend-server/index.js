@@ -1,5 +1,6 @@
 const testQuery = require("./src/service/test_query")
 const getBreadStock = require("./src/service/bakery_list")
+const { executeQuery } = require('./src/database_connection');
 
 const express = require('express');
 const app = express();
@@ -9,8 +10,6 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('¡Bienvenido al backend de la panadería!');
-
-
 });
 
 
@@ -36,6 +35,15 @@ app.get('/db-test', async (req, res) => {
     res.json({ success: true, data: result });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.get('/db-test-2', async (req, res) => {
+  try {
+    const result = await executeQuery('SELECT * FROM productos');
+    res.json(result.rows);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 

@@ -5,6 +5,6 @@ frontend_image = "us-central1-docker.pkg.dev/tallersoftware-467001/bakery-taller
 db_user     = "postgres"
 db_password = "miclave123"
 db_name     = "bakerydb"
-db_instance_connection_name = "/cloudsql/tallersoftware-467001:us-central1:mi-postgres-instance"
+db_instance_connection_name = "/cloudsql/tallersoftware-467001:us-central1:postgres-instance"
 
 network_name = "projects/tallersoftware-467001/global/networks/my-vpc"
