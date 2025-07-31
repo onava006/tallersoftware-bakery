@@ -6,11 +6,7 @@ resource "google_cloud_run_service_iam_member" "frontend_can_invoke_backend" {
   location = var.backend_service_location
 }
 
-resource "google_project_iam_member" "run_sql_access" {
-  project = var.project
-  role    = "roles/cloudsql.client"
- member  = "serviceAccount:${google_service_account.run_sa.email}"
-}
+
 
 resource "google_sql_user" "db_user" {
   name     = var.db_user
