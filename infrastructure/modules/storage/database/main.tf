@@ -34,6 +34,7 @@ resource "google_compute_global_address" "private_ip_range" {
   network       = google_compute_network.vpc.id
 }
 
+
 resource "google_compute_subnetwork" "subnet" {
   name          = "private-subnet"
   ip_cidr_range = "10.10.0.0/16"
