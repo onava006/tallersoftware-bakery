@@ -17,3 +17,7 @@ variable "db_password" {
   description = "PostgreSQL password"
   sensitive   = true
 }
+variable "network_name" {
+  type = string
+  description = "Nombre completo de la red VPC donde crear la conexión privada"
+}

@@ -6,3 +6,5 @@ db_user     = "postgres"
 db_password = "miclave123"
 db_name     = "bakerydb"
 db_instance_connection_name = "tallersoftware-467001:us-central1:mi-postgres-instance"
+
+network_name = "projects/tallersoftware-467001/global/networks/my-vpc"

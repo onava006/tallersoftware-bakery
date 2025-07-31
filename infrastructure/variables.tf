@@ -42,3 +42,7 @@ variable "db_instance_connection_name" {
   type        = string
   description = "Conexión a la instancia de Cloud SQL (formato: project:region:instance)"
 }
+
+variable "network_name"{
+type = string
+}

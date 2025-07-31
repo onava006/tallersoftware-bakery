@@ -42,7 +42,7 @@ module "database"{
   region = var.location
   db_user = var.db_user
   db_password = var.db_name  
-
+  network_name = var.network_name
 }
 
 module "permissions"{
