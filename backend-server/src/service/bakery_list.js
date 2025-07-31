@@ -1,13 +1,23 @@
 const pool = require("../database_connection/db")
 
-async function testQuery() {
-  try {``
-    const res = await pool.query('SELECT NOW()');
-    console.log('Hora actual en la base de datos:', res.rows[0]);
+
+const query = "SELECT * FROM productos;"
+
+const getBreadStock = async () => {
+  
+try{
+    const res = await pool.query(query);
+    return res
   } catch (err) {
     console.error('Error conectando a la base de datos:', err);
+    return null;
   }
+
 }
 
-module.exports = testQuery;
+module.exports = getBreadStock;
+
+
+
+
 
