@@ -9,12 +9,7 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('¡Bienvenido al backend de la panadería!');
-console.log("Conectando a la base de datos con los siguientes parámetros:");
-console.log(`USER: ${process.env.DB_USER}`);
-console.log(`PASSWORD: ${process.env.DB_PASSWORD}`);
-console.log(`DATABASE: tallersoftware-467001:us-central1:postgres-instance`);
-console.log(`HOST: ${process.env.DB_HOST}`);
-console.log(`SOCKET PATH: ${process.env.DB_HOST}`);
+
 
 });
 
