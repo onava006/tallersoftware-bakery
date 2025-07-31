@@ -23,7 +23,7 @@ module "backend" {
   db_password = var.db_name
   db_connection_name = module.database.postgres_connection_name
   db_name = module.database.app_db_name
-   
+   frontend_service_account_email = module.frontend.frontend_service_account_email
 
 }
 
@@ -34,6 +34,7 @@ module "frontend" {
   image  = var.frontend_image
   project = var.project_id
   backend_url  = module.backend.url
+  backend_service_name = module.backend.backend_service_name
 }
 
 module "database"{
