@@ -3,10 +3,6 @@ variable "name" {
   type        = string
 }
 
-variable "location" {
-  description = "Región donde desplegar"
-  type        = string
-}
 
 variable "image" {
   description = "Imagen del contenedor"
@@ -16,3 +12,27 @@ variable "image" {
 variable "project" {
   type =  string
 }
+
+variable "region" {
+  type        = string
+  description = "GCP region"
+}
+
+variable "db_user" {
+  type        = string
+  description = "PostgreSQL username"
+}
+
+variable "db_password" {
+  type        = string
+  description = "PostgreSQL password"
+  sensitive   = true
+}
+variable "db_connection_name" {
+  type = string
+}
+
+variable "db_name" {
+  type = string
+}
+

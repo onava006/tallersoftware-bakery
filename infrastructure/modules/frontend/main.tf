@@ -12,8 +12,13 @@ resource "google_cloud_run_service" "frontend" {
         ports {
           container_port = 80
         }
+        env {
+          name  = "VITE_BACKEND_URL"
+          value = var.backend_url
+        }
       }
       service_account_name = "frontend-service-account@${var.project}.iam.gserviceaccount.com"
+    
 
     }
   }
@@ -25,6 +30,7 @@ resource "google_cloud_run_service" "frontend" {
 
   autogenerate_revision_name = true
 }
+
 
 resource "google_cloud_run_service_iam_member" "frontend_public" {
   location = var.location

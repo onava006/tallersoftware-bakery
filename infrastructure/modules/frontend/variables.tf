@@ -14,3 +14,7 @@ variable "project" {
   type =  string
 }
 
+variable "backend_url" {
+  type        = string
+  description = "URL del backend para consumir desde el frontend"
+}

@@ -1,6 +1,30 @@
 resource "google_cloud_run_service_iam_member" "frontend_can_invoke_backend" {
-  service  = google_cloud_run_service.backend_service.name
-  location = google_cloud_run_service.backend_service.location
+
   role     = "roles/run.invoker"
   member   = "serviceAccount:frontend-service-account@${var.project}.iam.gserviceaccount.com"
+   service  = var.backend_service_name
+  location = var.backend_service_location
+}
+
+resource "google_project_iam_member" "run_sql_access" {
+  project = var.project
+  role    = "roles/cloudsql.client"
+ member  = "serviceAccount:${google_service_account.run_sa.email}"
+}
+
+resource "google_sql_user" "db_user" {
+  name     = var.db_user
+  instance = var.postgres_instance_name
+  password = var.db_password
+}
+
+resource "google_project_iam_member" "cloud_run_sql_access" {
+  project = var.project
+  role    = "roles/cloudsql.client"
+  member  = "serviceAccount:${google_service_account.run_sa.email}"
+}
+
+resource "google_service_account" "run_sa" {
+  account_id   = "run-service-account"
+  display_name = "Cloud Run Service Account"
 }

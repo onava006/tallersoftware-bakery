@@ -2,7 +2,7 @@
 
 resource "google_cloud_run_service" "backend_service" {
   name = var.name
-  location = var.location
+  location = var.region
   project  = var.project
 
   template {
@@ -12,7 +12,28 @@ resource "google_cloud_run_service" "backend_service" {
         ports {
           container_port = 8080
         }
+
+         env {
+          name  = "DB_HOST"
+          value = "/cloudsql/${var.db_connection_name}"
+        }
+
+        env {
+          name  = "DB_USER"
+          value = var.db_user
+        }
+
+        env {
+          name  = "DB_PASSWORD"
+          value = var.db_password
+        }
+
+        env {
+          name  = "DB_NAME"
+          value = var.db_name
+        }
       }
+       container_concurrency = 8 
     }
   }
 
