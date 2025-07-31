@@ -17,8 +17,7 @@ resource "google_cloud_run_service" "frontend" {
           value = var.backend_url
         }
       }
-      service_account_name = "frontend-service-account@${var.project}.iam.gserviceaccount.com"
-    
+      service_account_name = google_service_account.frontend_sa.email    
 
     }
   }
@@ -37,4 +36,13 @@ resource "google_cloud_run_service_iam_member" "frontend_public" {
   service  = google_cloud_run_service.frontend.name
   role     = "roles/run.invoker"
   member   = "allUsers"
+}
+resource "google_service_account" "frontend_sa" {
+  account_id   = "frontend-service-account"
+  display_name = "Frontend Cloud Run Service Account"
+}
+resource "google_project_iam_member" "frontend_act_as" {
+  project = var.project
+  role    = "roles/iam.serviceAccountUser"
+  member  = "serviceAccount:${google_service_account.frontend_sa.email}"
 }
