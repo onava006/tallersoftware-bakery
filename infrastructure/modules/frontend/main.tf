@@ -46,3 +46,8 @@ resource "google_project_iam_member" "frontend_act_as" {
   role    = "roles/iam.serviceAccountUser"
   member  = "serviceAccount:${google_service_account.frontend_sa.email}"
 }
+resource "google_service_account_iam_member" "allow_act_as" {
+  service_account_id = google_service_account.frontend_sa.name
+  role               = "roles/iam.serviceAccountUser"
+  member             = "user:oscar.nvergara@gmail.com" 
+}
