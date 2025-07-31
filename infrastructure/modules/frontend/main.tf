@@ -15,7 +15,15 @@ resource "google_cloud_run_service" "frontend" {
         env {
           name  = "VITE_BACKEND_URL"
           value = var.backend_url
+
+       
+      
+      
         }
+        env {
+        name  = "PORT"
+        value = "80"
+      }
       }
       service_account_name = google_service_account.frontend_sa.email    
 
