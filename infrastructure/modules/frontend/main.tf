@@ -20,10 +20,7 @@ resource "google_cloud_run_service" "frontend" {
       
       
         }
-        env {
-        name  = "PORT"
-        value = "80"
-      }
+
       }
       service_account_name = google_service_account.frontend_sa.email    
 
