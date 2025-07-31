@@ -1,5 +1,4 @@
 const testQuery = require("./src/service/test_query")
-const createTables =  require("./src/service/create_tables")
 const getBreadStock = require("./src/service/bakery_list")
 
 const express = require('express');
