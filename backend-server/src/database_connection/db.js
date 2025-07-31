@@ -8,3 +8,5 @@ const pool = new Pool({
   host: process.env.DB_HOST, // Debe ser /cloudsql/...
   socketPath: process.env.DB_HOST, // Necesario para Cloud SQL
 });
+
+module.exports = pool;
