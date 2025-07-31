@@ -11,6 +11,8 @@ resource "google_sql_database_instance" "postgres_instance" {
       ipv4_enabled    = false
       private_network = google_compute_network.vpc.id
     }
+   availability_type = "ZONAL"
+
   }
 
   deletion_protection = false
