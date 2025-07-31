@@ -19,4 +19,6 @@ output "backend_service_url" {
   value = google_cloud_run_v2_service.backend_service.uri
 }
 
-
+output "run_service_account_email" {
+  value = google_service_account.run_sa.email
+}

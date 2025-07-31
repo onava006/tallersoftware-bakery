@@ -55,6 +55,6 @@ module "permissions"{
    backend_service_account_name = module.backend.backend_service_account_name
   backend_service_name          = module.backend.backend_service_name
   backend_service_location      = module.backend.backend_service_location
-   
+   run_service_account_email = module.backend.run_service_account_email
    }
 
