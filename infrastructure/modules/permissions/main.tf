@@ -20,7 +20,4 @@ resource "google_project_iam_member" "cloud_run_sql_access" {
   member  = "serviceAccount:${google_service_account.run_sa.email}"
 }
 
-resource "google_service_account" "run_sa" {
-  account_id   = "run-service-account"
-  display_name = "Cloud Run Service Account"
-}
+
