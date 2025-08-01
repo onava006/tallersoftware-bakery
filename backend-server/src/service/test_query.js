@@ -1,5 +1,6 @@
+
 async function testQuery() {
-  try {``
+  try {
     const res = await pool.query('SELECT NOW()');
     console.log('Hora actual en la base de datos:', res.rows[0]);
     return res

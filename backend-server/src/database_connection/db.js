@@ -7,7 +7,7 @@ const pool = new Pool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: "appdb", // Nombre real de la base de datos (NO el nombre de conexión)
-  host: `/cloudsql/tallersoftware-467001:us-central1:postgres-instance`, // Ej: tallersoftware-467001:us-central1:postgres-instance
+  host: `/cloudsql/tallersoftware-467001:us-central1:postgres-instance` // Ej: tallersoftware-467001:us-central1:postgres-instance
 });
 
 
@@ -27,19 +27,7 @@ async function testConnection() {
   }
 }
 
-async function executeQuery(text, params = []) {
-  const client = await pool.connect();
-  try {
-    const result = await client.query(text, params);
-    return result;
-  } catch (error) {
-    console.error('Error ejecutando query:', error);
-    throw error;
-  } finally {
-    client.release();
-  }
-}
 
 
-module.exports = testConnection();
-module.exports = executeQuery(); 
+
+module.exports = testConnection;
