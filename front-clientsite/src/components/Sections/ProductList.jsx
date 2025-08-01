@@ -16,23 +16,28 @@ export default function ProductList() {
 const [products, setProducts] = useState();
 
 
-var varsita = useEffect(() => {
-  fetch('https://backend-763457621296.us-central1.run.app/productos')
-    .then(res => res.json())
-    .then(setProducts)
-    .then(data => {
-      console.log('Productos:', data);
-      
-    })
-    .catch(err => console.error('Error al obtener productos:', err));
-}, []);
+
+useEffect(() => {
+    async function fetchProductos() {
+      try {
+        const response = await fetch('https://backend-763457621296.us-central1.run.app/productos');
+        const json = await response.json();
+        // Asegúrate que json.data.rows existe antes de usarlo
+        setProducts(json.data?.rows || []);
+      } catch (error) {
+        console.error("Error cargando productos:", error);
+      }
+    }
+    fetchProductos();
+  }, []);
+
 
 
   return (
     <section className="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      {Array.isArray(varsita) ? 
+      {Array.isArray(products) ? 
       
-      varsita.map((producto) => (
+      products.map((producto) => (
        <Product producto = {producto}/>
       ))
     : (
