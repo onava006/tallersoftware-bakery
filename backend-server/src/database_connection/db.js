@@ -18,7 +18,7 @@ async function testConnection() {
     const client = await pool.connect();
     const result = await client.query('SELECT NOW()');
     console.log('✅ Conexión exitosa a la base de datos');
-    console.log('Tiempo del servidor:', result.rows[0].now);
+    console.log('🕒 Tiempo del servidor:', result.rows[0].now);
     client.release();
     return true;
   } catch (error) {
@@ -27,7 +27,8 @@ async function testConnection() {
   }
 }
 
+module.exports = {
+  pool,
+  testConnection
+};
 
-
-
-module.exports = testConnection;

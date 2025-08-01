@@ -24,7 +24,6 @@ app.get('/', (req, res) => {
 app.post('/pedido', async (req, res) => {
 
 console.log('estamos guardando el pedido')
-
 })
 
 
@@ -37,14 +36,7 @@ app.get('/db-test', async (req, res) => {
   }
 });
 
-app.get('/db-test-2', async (req, res) => {
-  try {
-    const result = await executeQuery('SELECT * FROM productos');
-    res.json(result.rows);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
