@@ -9,8 +9,9 @@ const pool = new Pool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: "appdb", // Nombre real de la base de datos (NO el nombre de conexión)
-  host: `tallersoftware-467001:us-central1:postgres-instance` // Ej: tallersoftware-467001:us-central1:postgres-instance
+  host: `/cloudsql/tallersoftware-467001:us-central1:postgres-instance` // Ej: tallersoftware-467001:us-central1:postgres-instance
 });
+
 
 
 
