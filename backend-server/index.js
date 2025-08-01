@@ -11,8 +11,9 @@ app.use(cors({
   origin: 'https://website-763457621296.us-central1.run.app'
 }));
 
-
 app.use(express.json());
+
+
 
 app.get('/', (req, res) => {
   res.send('¡Bienvenido al backend de la panadería!');
