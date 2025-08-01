@@ -1,7 +1,6 @@
 const testQuery = require("./src/service/test_query")
 const getBreadStock = require("./src/service/bakery_list")
-const { executeQuery } = require('./src/database_connection');
-
+const { testConnection, query } = require("./src/database_connection/db");
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -13,7 +12,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.get('/productos', async (req, res) => {
+ app.get('/productos', async (req, res) => {
   try {
     const result = await getBreadStock();
     res.json({ success: true, data: result });
